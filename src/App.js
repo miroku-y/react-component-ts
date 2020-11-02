@@ -1,6 +1,12 @@
-import React from 'react'
+import * as React from 'react'
 import { Layout, Menu } from 'antd';
+// 路由使用 history模式
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import Hello from './components/hello'
+import Button from './components/button'
+import Alert from './components/alert'
 import 'antd/dist/antd.css';
+import logo from './logo.svg'
 import './App.css';
 
 import {
@@ -26,18 +32,18 @@ class App extends React.Component {
 
   render() {
     return (
-      <Layout>
+      <Layout className="layout-wrap">
         <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
-          <div className="logo" />
+          <div className="App-logo"><img src={logo} /></div>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
             <Menu.Item key="1" icon={<UserOutlined />}>
-              nav 1
+              <Link to='/button'>Button</Link>
             </Menu.Item>
             <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-              nav 2
+              <Link to='/alert'>Alert</Link>
             </Menu.Item>
             <Menu.Item key="3" icon={<UploadOutlined />}>
-              nav 3
+            <Link to='/hello'>Hello</Link>
             </Menu.Item>
           </Menu>
         </Sider>
@@ -56,7 +62,12 @@ class App extends React.Component {
               minHeight: 280,
             }}
           >
-            Content
+            <Switch>
+              <Route exact path='/button' component={Button} />
+              <Route exact path='/alert' component={Alert} />
+              <Route exact path='/hello' component={Hello} />
+              {/* <Redirect to='/' /> */}
+            </Switch>
           </Content>
         </Layout>
       </Layout>

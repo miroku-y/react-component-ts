@@ -3,8 +3,12 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 60px;
   pointer-events: none;
+}
+.App-logo img {
+  height: 100%;
+  width: 100%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -26,6 +30,10 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.layout-wrap {
+  height: 100%;
 }
 
 @keyframes App-logo-spin {
